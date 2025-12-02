@@ -1,5 +1,10 @@
 import React from 'react';
 import { useLoaderData, useParams } from 'react-router';
+import { addToReadsBookDB, addToWishListBookDB } from '../../utility/addToDB';
+import Swal from 'sweetalert2'
+import withReactContent from 'sweetalert2-react-content'
+import { ToastContainer, toast } from 'react-toastify';
+const MySwal = withReactContent(Swal)
 
 const BookDetails = () => {
     const { id } = useParams()
@@ -10,7 +15,22 @@ const BookDetails = () => {
     const singleBook = booksData.find(book => book.bookId === parseInt(id))
     // console.log(singleBook)
 
-    const { bookId, bookName, author, image, review, totalPages, rating, category, tags, publisher, yearOfPublishing } = singleBook
+    const { bookName, author, image, review, totalPages, rating, category, tags, publisher, yearOfPublishing } = singleBook
+
+    const handleMarkAsRead = id => {
+
+        Swal.fire({
+            title: "Good job!",
+            text: "You clicked the button!",
+            icon: "success"
+        });
+        // toast("Wow so easy!");
+
+        addToReadsBookDB(id)
+    }
+    const handleMarkAsWishList = id => {
+        addToWishListBookDB(id)
+    }
 
     return (
         <div className='flex my-10 gap-10'>
@@ -47,12 +67,13 @@ const BookDetails = () => {
                     </div>
                 </div>
                 <div>
-                    <button className='btn mr-5 p-7 bg-white text-black text-xl font-semibold rounded-xl'>Read</button>
-                    <button className='btn mr-5 p-7 bg-[#50B1C9] text-white text-xl font-semibold rounded-xl'>Wishlist</button>
+                    <button onClick={() => handleMarkAsRead(id)} className='btn mr-5 p-7 bg-white text-black text-xl font-semibold rounded-xl'>Read</button>
+                    <button onClick={() => handleMarkAsWishList(id)} className='btn mr-5 p-7 bg-[#50B1C9] text-white text-xl font-semibold rounded-xl'>Wishlist</button>
                 </div>
 
 
             </div>
+             <ToastContainer />
         </div>
     );
 };

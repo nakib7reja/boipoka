@@ -9,7 +9,7 @@ const Book = ({ singleBook }) => {
     // const books = use(bookPromise)
     // console.log(books)
 
-    const { bookId, bookName, author, image, rating, category, tags } = singleBook
+    const { bookId, bookName, author, image, totalPages, rating, category, tags } = singleBook
     // console.log(bookName, author)
 
 
@@ -29,6 +29,8 @@ const Book = ({ singleBook }) => {
                     <h1 className='text-4xl font-semibold my-5'>{bookName}</h1>
                     <p className='text-2xl font-normal my-5'>By: {author}</p>
                 </div>
+
+                <p className='font-normal text-xl mx-5'>Pages: {totalPages}</p>
                 <div className='m-5 flex justify-between'>
                     <p className='text-xl font-normal'>{category}</p>
                     <p className='text-xl font-normal flex gap mr-5'>{rating} <img src={ratingIcon} /> </p>
