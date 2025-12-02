@@ -1,4 +1,5 @@
-import React, { Suspense, useEffect, useState } from 'react';
+import React, { Suspense } from 'react';
+// import React, { useEffect, useState } from 'react';
 import Book from '../Book/Book';
 
 const Books = ({ bookData }) => {
@@ -20,7 +21,7 @@ const Books = ({ bookData }) => {
             <Suspense fallback={<span>loading.....</span>}>
                 <div className='grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-10 my-10'>
                     {
-                        bookData.map(SingleBook => <Book key={SingleBook.bookId} SingleBook={SingleBook}></Book>)
+                        bookData.map(singleBook => <Book key={singleBook.bookId} singleBook={singleBook}></Book>)
                     }
                 </div>
             </Suspense>

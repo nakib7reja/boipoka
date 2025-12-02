@@ -1,15 +1,15 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React, { use } from 'react';
+// import React, { use } from 'react';
 import ratingIcon from '../../assets/star-regular-full.svg'
 import { Link } from 'react-router';
 
-const Book = ({ SingleBook }) => {
+const Book = ({ singleBook }) => {
 
     // console.log(bookPromise)
     // const books = use(bookPromise)
     // console.log(books)
 
-    const { bookId, bookName, author, image, review, rating, category, tags, publisher, yearOfPublishing } = SingleBook
+    const { bookId, bookName, author, image, rating, category, tags } = singleBook
     // console.log(bookName, author)
 
 
